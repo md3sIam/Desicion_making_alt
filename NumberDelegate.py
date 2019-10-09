@@ -8,14 +8,12 @@ class NumberDelegate(QItemDelegate):
 
     # override
     def createEditor(self, widget=QWidget, option=QStyleOptionViewItem, index=QModelIndex):
-        editor = QDoubleSpinBox(widget)
-        editor.setMaximum(999999.99999)
-        editor.setDecimals(5)
+        editor = QLineEdit(widget)
         return editor
 
     # override
     def setEditorData(self, widget=QWidget, index=QModelIndex):
-        widget.setValue(float(index.data()))
+        widget.setText(str(index.data()))
         pass
 
     # override
@@ -24,10 +22,10 @@ class NumberDelegate(QItemDelegate):
         pass
 
     # override
-    def setModelData(self, widget=QWidget, model=QAbstractItemModel, index=QModelIndex):
+    def setModelData(self, widget=QLineEdit, model=QAbstractTableModel, index=QModelIndex):
         try:
-            value = float(widget.value())
-        except:
-            value = 0
-        model.setData(index, value, Qt.EditRole)
+            value = float(widget.text())
+        except ValueError:
+            return
+        model.setData(index, QVariant(value), Qt.EditRole)
         pass

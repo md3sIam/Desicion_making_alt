@@ -4,8 +4,8 @@ from PyQt5.QtCore import *
 class TableModel(QAbstractTableModel):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.__matrix = [list(range(1, 10)),
-                         list(range(11, 20))]
+        self.__matrix = [list(range(1, 4)),
+                         list(range(11, 14))]
         pass
 
     # override
@@ -25,13 +25,13 @@ class TableModel(QAbstractTableModel):
             return QVariant()
 
         if role == Qt.TextAlignmentRole:
-            return Qt.AlignLeft
+            return Qt.AlignHCenter | Qt.AlignVCenter
         else:
             return self.__matrix[model_index.row()][model_index.column()]
 
     # override
     def setData(self, model_index=QModelIndex(), value=QVariant(), role=None):
-        self.__matrix[model_index.row()][model_index.column()] = float(value)
+        self.__matrix[model_index.row()][model_index.column()] = value
         self.dataChanged.emit(model_index, model_index)
         return True
 
