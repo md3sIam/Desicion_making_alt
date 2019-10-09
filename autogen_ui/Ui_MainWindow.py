@@ -110,6 +110,7 @@ class Ui_MainWindow(object):
         self.m_changeEqualitySizeFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.m_changeEqualitySizeFrame.setObjectName("m_changeEqualitySizeFrame")
         self.gridLayout = QtWidgets.QGridLayout(self.m_changeEqualitySizeFrame)
+        self.gridLayout.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setHorizontalSpacing(15)
         self.gridLayout.setVerticalSpacing(21)

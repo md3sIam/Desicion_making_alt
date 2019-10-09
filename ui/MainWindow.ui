@@ -258,6 +258,9 @@
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QGridLayout" name="gridLayout" columnminimumwidth="0,40,40">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetFixedSize</enum>
+          </property>
           <property name="leftMargin">
            <number>0</number>
           </property>

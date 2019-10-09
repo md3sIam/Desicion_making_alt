@@ -39,4 +39,3 @@ class MainWindow(QMainWindow):
             circleButtons[i].setStyleSheet(circleButtonStyleSheet % (greenColor if i < 2 else redColor))
 
         # \todo доделать actions из menubar
-        # \todo отступы grid layout'а при растяжении окна
