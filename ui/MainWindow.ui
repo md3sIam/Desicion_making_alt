@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>837</width>
+    <width>947</width>
     <height>460</height>
    </rect>
   </property>
@@ -70,7 +70,7 @@
     <item>
      <widget class="QFrame" name="m_matricesFrame">
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
@@ -94,7 +94,7 @@
        <item>
         <widget class="QFrame" name="m_matrixA">
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
@@ -143,7 +143,7 @@
              <set>Qt::ImhDigitsOnly</set>
             </property>
             <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
+             <enum>QFrame::Box</enum>
             </property>
             <property name="verticalScrollMode">
              <enum>QAbstractItemView::ScrollPerPixel</enum>
@@ -165,7 +165,7 @@
        <item>
         <widget class="QFrame" name="m_matrixB">
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
@@ -209,7 +209,7 @@
              <locale language="English" country="UnitedStates"/>
             </property>
             <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
+             <enum>QFrame::Box</enum>
             </property>
             <property name="verticalScrollMode">
              <enum>QAbstractItemView::ScrollPerPixel</enum>
@@ -228,7 +228,7 @@
     <item>
      <widget class="QFrame" name="m_buttonsFrame">
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
@@ -251,8 +251,14 @@
        </property>
        <item>
         <widget class="QFrame" name="m_changeEqualitySizeFrame">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
@@ -494,7 +500,7 @@ color: white;</string>
           <set>Qt::ImhNone</set>
          </property>
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
@@ -560,8 +566,8 @@ color: white;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>837</width>
-     <height>26</height>
+     <width>947</width>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_formMenu">
