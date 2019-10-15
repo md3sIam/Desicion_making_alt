@@ -55,8 +55,6 @@ class MainWindow(QMainWindow):
         self.ui.m_addColumnButton.clicked.connect(self.ui.tableViewA.model().addColumn)
         self.ui.m_removeColumnButton.clicked.connect(self.ui.tableViewA.model().rmColumn)
 
-        self.ui.m_checkButton.clicked.connect(self.printMs)
-
         # \todo доделать actions из menubar
         # \todo ux
 
