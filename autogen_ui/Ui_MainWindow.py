@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(837, 460)
+        MainWindow.resize(947, 460)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(115, 115, 115))
@@ -251,7 +251,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.m_buttonsFrame)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 837, 29))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 947, 29))
         self.menubar.setObjectName("menubar")
         self.m_formMenu = QtWidgets.QMenu(self.menubar)
         self.m_formMenu.setObjectName("m_formMenu")

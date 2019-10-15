@@ -5,11 +5,14 @@ from PyQt5.QtCore import Qt
 
 
 class TableModel(QAbstractTableModel):
-    def __init__(self, parent=None):
+    def __init__(self, size=(3, 3), parent=None):
         super().__init__(parent)
-        self.__matrix = [list(range(1, 4)),
-                         list(range(11, 14))]
+        self.__matrix = [[0 for _ in range(size[1])] for _ in range(size[0])]
+        print(self.__matrix)
         pass
+
+    def value(self):
+        return self.__matrix
 
     # override
     def rowCount(self, parent=None, *args, **kwargs):
@@ -42,27 +45,50 @@ class TableModel(QAbstractTableModel):
     def flags(self, model_index=QModelIndex()):
         return Qt.ItemIsEditable | Qt.ItemIsEnabled
 
-    # # override
-    # def insertRows(self, p_int, p_int_1, parent=None, *args, **kwargs):
-    #     self.beginInsertRows()
-    #     # code
-    #     self.endInsertRows()
-    #     pass
-    #
-    # # override
-    # def insertColumns(self, p_int, p_int_1, parent=None, *args, **kwargs):
-    #     self.beginInsertColumns()
-    #     self.endInsertColumns()
-    #     pass
-    #
-    # # override
-    # def removeRows(self, p_int, p_int_1, parent=None, *args, **kwargs):
-    #     self.beginRemoveRows()
-    #     self.endRemoveRows()
-    #     pass
-    #
-    # # override
-    # def removeColumns(self, p_int, p_int_1, parent=None, *args, **kwargs):
-    #     self.beginRemoveColumns()
-    #     self.endRemoveColumns()
-    #     pass
+    def addRow(self):
+        self.insertRows(len(self.__matrix) - 1, 1, None)
+        pass
+
+    def rmRow(self):
+        if len(self.__matrix) > 1:
+            self.removeRows(len(self.__matrix) - 1, 1, None)
+        pass
+
+    def addColumn(self):
+        self.insertColumns(len(self.__matrix[0]) - 1, 1, None)
+        pass
+
+    def rmColumn(self):
+        if len(self.__matrix[0]) > 1:
+            self.removeColumns(len(self.__matrix[0]) - 1, 1, None)
+        pass
+
+    # override
+    def insertRows(self, p_int, p_int_1, parent=None, *args, **kwargs):
+        self.beginInsertRows(QModelIndex(), p_int, p_int)
+        self.__matrix += [[0 for _ in range(len(self.__matrix[0]))]]
+        self.endInsertRows()
+        return True
+
+    # override
+    def insertColumns(self, p_int, p_int_1, parent=None, *args, **kwargs):
+        self.beginInsertColumns(QModelIndex(), p_int, p_int)
+        for row in self.__matrix:
+            row.append(0)
+        self.endInsertColumns()
+        pass
+
+    # override
+    def removeRows(self, p_int, p_int_1, parent=None, *args, **kwargs):
+        self.beginRemoveRows(QModelIndex(), p_int, p_int)
+        self.__matrix.pop()
+        self.endRemoveRows()
+        return True
+
+    # override
+    def removeColumns(self, p_int, p_int_1, parent=None, *args, **kwargs):
+        self.beginRemoveColumns(QModelIndex(), p_int, p_int)
+        for row in self.__matrix:
+            row.pop()
+        self.endRemoveColumns()
+        pass
