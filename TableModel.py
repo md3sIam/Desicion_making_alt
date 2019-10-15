@@ -1,4 +1,7 @@
-from PyQt5.QtCore import *
+# importing modules
+from PyQt5.QtCore import QAbstractTableModel, QModelIndex, QVariant
+# importing namespaces for enums
+from PyQt5.QtCore import Qt
 
 
 class TableModel(QAbstractTableModel):
