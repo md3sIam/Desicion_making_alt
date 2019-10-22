@@ -8,7 +8,6 @@ class TableModel(QAbstractTableModel):
     def __init__(self, size=(3, 3), parent=None):
         super().__init__(parent)
         self.__matrix = [[0 for _ in range(size[1])] for _ in range(size[0])]
-        print(self.__matrix)
         pass
 
     def value(self):
@@ -37,7 +36,7 @@ class TableModel(QAbstractTableModel):
 
     # override
     def setData(self, model_index=QModelIndex(), value=QVariant(), role=None):
-        self.__matrix[model_index.row()][model_index.column()] = value
+        self.__matrix[model_index.row()][model_index.column()] = value.value()
         self.dataChanged.emit(model_index, model_index)
         return True
 

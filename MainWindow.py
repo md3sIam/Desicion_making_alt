@@ -14,6 +14,7 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        # setting up main gui
         self.ui.tableViewA.setItemDelegate(NumberDelegate())
         self.ui.tableViewA.setModel(TableModel(DEFAULT_SIZE_A))
 
@@ -55,9 +56,30 @@ class MainWindow(QMainWindow):
         self.ui.m_addColumnButton.clicked.connect(self.ui.tableViewA.model().addColumn)
         self.ui.m_removeColumnButton.clicked.connect(self.ui.tableViewA.model().rmColumn)
 
+        self.ui.m_checkButton.clicked.connect(self.processSystem)
         # \todo доделать actions из menubar
         # \todo ux
 
     # returns matrix A and vector b
     def matrices(self):
         return self.ui.tableViewA.model().value(), self.ui.tableViewB.model().value()
+
+    # main app method
+    def processSystem(self):
+        # \todo должно вылазить окошко с результатом
+        print(self.matrices())
+        pass
+
+    def about(self):
+        with open("README.md") as file:
+            text = file.read()
+            textEdit = QLabel(text, self)
+            textEdit.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
+            textEdit.setFixedWidth(320)
+            textEdit.setFixedHeight(240)
+            textEdit.setAlignment(Qt.AlignLeft | Qt.AlignTop)
+            textEdit.setWindowFlag(Qt.Window)
+            textEdit.setWindowFlag(Qt.WindowStaysOnTopHint)
+            textEdit.setWindowModality(Qt.ApplicationModal)
+            textEdit.show()
+        pass
