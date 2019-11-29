@@ -1,7 +1,9 @@
+import computeMatrix
 from NumberDelegate import *
 from TableModel import TableModel
 from autogen_ui.Ui_MainWindow import *
 from PyQt5.QtWidgets import *
+import concurrent.futures, time
 
 
 class MainWindow(QMainWindow):
@@ -67,7 +69,33 @@ class MainWindow(QMainWindow):
     # main app method
     def processSystem(self):
         # \todo должно вылазить окошко с результатом
-        print(self.matrices())
+        def x(sec):
+            time.sleep(sec)
+            print("end")
+            return True
+
+        waitMsgBox = QMessageBox(QMessageBox.NoIcon, "Результат", "Вычисление результата...", QMessageBox.Cancel)
+
+        answer = None
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            answer = executor.submit(x, 2)#computeMatrix.compute_matrix, self.matrices())
+            cancelButton = waitMsgBox.button(QMessageBox.Cancel)
+            cancelButton.clicked.connect(answer.cancel)
+            waitMsgBox.exec()
+            # concurrent.futures.wait(answer)
+            while answer.running():
+                pass
+
+        text = None
+        if answer.result():
+            text = "Система совместна!"
+        else:
+            text = "Система несовместна!"
+
+        waitMsgBox.button(QMessageBox.Cancel).click()
+        if not answer.cancelled():
+            msgBox = QMessageBox(QMessageBox.NoIcon, "Результат", text, QMessageBox.Ok)
+            msgBox.exec()
         pass
 
     def about(self):
